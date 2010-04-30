@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>JQTemplate - example - iterate on table</title>
+	<link href="example.css" type="text/css" rel="stylesheet"></link>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+	<script src="../jqtemplate.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var products = [
+				{	
+					type:'software',
+					products:[
+						{descrip: 'Abobe Photoshop CS4 Professional', price:2099},
+						{descrip: 'Autodesk AutoCAD LT', price:800}
+					]
+				}, {	
+					type:'hardware',
+					products:[
+						{descrip: 'Samsung 1TB 7200RPM SATA Hard Drive', price:250},
+						{descrip: 'Seagate 750GB 7200RPM SATA Hard Drive', price:189}
+					]
+				}];
+		$(function () {
+			// render top level template
+			$('#result').jQTemplate(products, {}, '.templates .productTypes')
+				// render render next level nested template
+				.find('.product').each(function (productsIndex) {
+					var productsByType = products[productsIndex].products;
+					$(this).jQTemplate(productsByType, {
+							'price': function (index) {
+									return '$' + productsByType[index].price.toFixed(2);
+								}
+						}, '.templates .productsByType')
+				});
+		});
+	</script>
+</head>
+<body>
+	<div id="result"></div>
+	<div class="templates" style="display:none;">
+		<!-- top level table template -->
+		<table class="productTypes">
+			<tbody>
+				<tr>
+					<td class="type"></td> 
+					<td class="product"></td> 
+				</tr>
+			</tbody>
+		</table>
+		<!-- nested table template -->
+		<table class="productsByType">
+			<thead>
+				<tr>
+					<th>Description</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="descrip"></td> 
+					<td class="price"></td> 
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

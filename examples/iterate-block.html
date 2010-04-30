@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>JQTemplate - example - iterate on table</title>
+	<link href="example.css" type="text/css" rel="stylesheet"></link>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+	<script src="../jqtemplate.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var movies = [
+				{title:'The Last Picture Show', year:'1971', genre:'Drama', rating:'8.1/10'},
+				{title:'The Dark Knight', year:'2008', genre:'Action', rating:'8.9/10'},
+				{title:'Pulp Fiction', year:'1994', genre:'Drama', rating:'8.9/10'},
+				{title:'Raiders of the Lost Ark', year:'1981', genre:'Action', rating:'8.7/10'},
+				{title:'Aliens', year:'1986', genre:'Sci-Fi', rating:'8.5/10'}
+			];
+		$(function () {
+			$('#blockResult').jQTemplate(movies, {}, '.templates .movieTemplate');
+		});
+	</script>
+</head>
+<body>
+	<div id="blockResult"></div>
+	<div class="templates" style="display:none;">
+		<div class="movieTemplate">
+			<div class="header">
+				<div class="title">Title</div>
+				<div class="year">Release Year</div>
+				<div class="genre">Genre</div>
+				<div class="rating">Rating</div>
+			</div>
+			<div class="itr">
+				<div class="cell">
+					<div class="title"></div> 
+					<div class="year"></div> 
+					<div class="genre"></div> 
+					<div class="rating"></div> 
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

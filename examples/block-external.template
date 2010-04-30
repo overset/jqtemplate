@@ -1,0 +1,8 @@
+<div class="movieTemplate">
+	<div class="cell">
+		<div class="title">Title</div>
+		<div class="year">Release Year</div>
+		<div class="genre">Genre</div>
+		<div class="rating">Rating</div>
+	</div>
+</div>

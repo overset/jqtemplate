@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>JQTemplate - example - iterate on table</title>
+	<link href="example.css" type="text/css" rel="stylesheet"></link>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+	<script src="../jqtemplate.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var products = [
+				{descrip:'Patriot Games', url:'http://amzn.com/0425109720', category:'Thrillers', retailPrice:18.4, price:7.99},
+				{descrip:'The Andromeda Strain', url:'http://amzn.com/006170315X', category:'Science Fiction', retailPrice:18.4, price:9.09},
+				{descrip:'Into Thin Air: A Personal Account of the Mt. Everest Disaster', url:'http://amzn.com/0307475255', category:'Mountaineering', retailPrice:25.99, price:10.01}
+			];
+		$(function () {
+			$('#blockResult').jQTemplate(products, {
+					'number': function (index) {
+							return index + 1;
+						},
+					'descrip': function (index) { 
+							return '<a target="_blank" href="' + products[index].url + '">' + products[index].descrip + '</a>';
+						},
+					'retailPrice': function (index) { 
+							return '$' + products[index].retailPrice.toFixed(2);
+						},
+					'price': function (index) { 
+							return '$' + products[index].price.toFixed(2);
+						},
+					'savings': function (index) { 
+							return '$' + (products[index].retailPrice - products[index].price).toFixed(2);
+						}
+				}, '.templates .productTemplate')
+				.find('.descrip').each(function (index) {
+					if (products[index - 1]) {
+						$(this).mouseover(function () {
+								$('#productURL').html('product url: ' + products[index - 1].url);
+							}).mouseout(function () {
+								$('#productURL').html('');
+							});
+					}
+				});
+		});
+	</script>
+</head>
+<body>
+	<div id="blockResult"></div>
+	<div id="productURL" style="clear:both;"></div>
+	<div class="templates" style="display:none;">
+		<div class="productTemplate">
+			<div class="header">
+				<div>&nbsp;</div>
+				<div class="descrip">Product Description</div>
+				<div>Category</div>
+				<div>Retail Price</div>
+				<div>Sale Price</div>
+				<div>Savings</div>
+			</div>
+			<div class="itr">
+				<div class="cell">
+					<div class="number"></div> 
+					<div class="descrip"></div> 
+					<div class="category"></div> 
+					<div class="retailPrice"></div> 
+					<div class="price"></div> 
+					<div class="savings"></div> 
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

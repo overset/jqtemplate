@@ -1,0 +1,48 @@
+/* table example styling */
+table {
+	background:#ddd;
+	border:1px solid #aaa;
+	padding:10px;
+	font-family:Arial;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px; 
+}
+table td, table th {
+	padding:5px;
+	background:#eee;
+	margin:0px;
+	border-bottom:1px solid #bbb;
+	border-right:1px solid #bbb;
+}
+table th {
+	background:#fff;
+}
+/* block example styling */
+#blockResult .header div, #blockResult .cell div {
+	float:left;
+	padding:3px;
+	background:#eee;
+	width:100px;
+	border:1px solid #bbb;
+	margin:2px;
+}
+#blockResult .header div {
+	background:#fefefe !important;
+}
+#blockResult .title, #blockResult .descrip {
+	width:200px !important;
+}
+#blockResult .year, #blockResult .genre {
+	text-align:center;
+}
+#blockResult .rating {
+	text-align:right;
+}
+#blockResult .header div {
+	background:#efefef;
+	text-align:center;
+}
+#blockResult .cell {
+	clear:both;
+}
