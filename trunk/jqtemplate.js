@@ -7,7 +7,7 @@
 (function($) {
 	$.fn.jQTemplate = function (data, mod, template) {
 		// clone the template and clobber the target
-		$(this).empty().append($(template).clone());
+		$(this).empty().append($(template).clone().html().replace(/>\s+</g, '><'));
 		// detect iterative or non-iterative root
 		var tbody=$('tbody:first,.itr:first', this).length ? $('tbody:first,.itr:first', this) : this,
 			tbodyTemplate=$(tbody).html().replace(/>\s+</g, '><'),
