@@ -9,7 +9,9 @@
 		// clone the template and clobber the target
 		$(this).empty().append($(template).clone());
 		// detect iterative or non-iterative root
-		var tbody=$('tbody:first,.itr:first', this).length ? $('tbody:first,.itr:first', this) : this, tbodyTemplate=$(tbody).html(), repHtml=[];
+		var tbody=$('tbody:first,.itr:first', this).length ? $('tbody:first,.itr:first', this) : this,
+			tbodyTemplate=$(tbody).html().replace(/>\s+</g, '><'),
+			repHtml=[];
 		// build iterated pre-dom-insertion
 		if (typeof data.length != 'undefined') {
 			for (var d=0, de=data.length; d < de; d++)
