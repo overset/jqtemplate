@@ -1,0 +1,1 @@
+Simple, lightweight and fast template engine building. Idea came from pure.js and chain.js implementations.
